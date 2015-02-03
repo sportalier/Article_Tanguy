@@ -73,9 +73,12 @@ Resource availability is described as the plant biomass multiplied by the plant 
 R_u=\sum ^n _{j=1} V_jQ_{vjRu}
 \end{equation}
 
-Table \ref{Parametres} represents a review of the state variables and the parameters used in the model. We analyze the model step-by-step, starting from a simple case with herbivores competing for one plant and one resource, then several plants and one resource, then multiple resources embedded into one plant, and finally the complete model, with multiple resources embedded into multiple plants.
+Table \ref{Parametres} represents a review of the state variables and the parameters used in the model. %We analyze the model step-by-step, starting from a simple case with herbivores competing for one plant and one resource, then several plants and one resource, then multiple resources embedded into one plant, and finally the complete model, with multiple resources embedded into multiple plants.
+Indeed, resources are provided by several plants, and each plant provides several resources. %, which create a new level of complexity.
+The first case is a spatial segregation of resources, while the second case is a stoichiometric balance issue between plant and herbivore.
 
-\subsection*{Case 1: one plant species and one resource}
+\subsection*{Spatial segregation of resources}%Case 1: one plant species and one resource}
+A given resources may be provided by only one plant or several plants, which creates a spatial segregation of resources. 
 First of all, consider a simple model with $p$ herbivore species feeding on one plant species embedding a single %chemical element 
 resource. 
 In case of one resource involved, this resource ($R$) is assumed to be growth limiting. 
@@ -90,12 +93,13 @@ Therefore, at equilibrium, herbivore biomass increases with plant availability (
 \begin{equation}\label{oneresource}
 \barre{R}_{hi}=\barre{V}Q_{vR}=\frac{S}{a+g_i\barre{H}_i}Q_{vR}
 \end{equation}
-This $\barre{R}_{hi}$ represents level of resource remaining available for another herbivore, it represents also the minimal threshold of resource availability for herbivore species $i$ (i.e., if resource availability is below this threshold this herbivore species cannot maintain a population at steady state). Indeed, it can be assimilated to Tilman's $R^*$.
+This $\barre{R}_{hi}$ represents level of resource remaining available for another herbivore, it also represents the minimal threshold of resource availability for herbivore species $i$ (i.e., if resource availability is below this threshold this herbivore species cannot maintain a population at steady state). Indeed, it can be assimilated to Tilman's $R^*$.
 Therefore, considering two herbivores (species 1 and species 2), if $g_1\barre{H}_1>g_2\barre{H}_2$, species 1 depletes resource below the threshold of species 2, and species 2 is excluded. %Therefore, competition between two herbivore limited by the same chemical resource embedded into one plant leads to competitive exclusion. 
-In other words, the competitive exclusion principles holds, that is, no more than one herbivore species can persist on one limiting resource.
+In other words, the competitive exclusion principles holds, that is, no more than one herbivore species can persist on one limiting resource if this resource is provided by a single plant. \par
 
-\subsection*{Case 2: several plant species and one resource}
-Consider now $p$ herbivore species competing for one resource ($R$) embedded into $n$ plants. 
+%\subsection*{Case 2: several plant species and one resource}
+However, consider now %$p$ herbivore species competing for one resource ($R$) embedded into $n$ plants. 
+that this resource ($R$) is provided by $n$ plants.
 Herbivores have access to the resource through the consumption of several species of plants, depending on their feeding strategy.   
 At steady state, it is possible to calculate $\barre{R}_{hi}$ for each herbivore $i$ (see appendix 2 for details):
 \begin{equation}\label{oneresourcetwoplants}
@@ -110,11 +114,14 @@ and
 \barre{R}_{h2}=\frac{S_1}{a_1+g_{21}\barre{H}_2}Q_{v1R}+\frac{S_2}{a_2+g_{22}\barre{H}_2}Q_{v2R}
 \end{equation}
 Clearly, the competition outcome depends on the foraging strategies of the competitors, more specifically, on the efficiencies of the consumption functions ($g_{ij}$). If $g_{11}>g_{21}$ and $g_{12}>g_{22}$, herbivore 1 consumes both plants more efficiently than its competitor. Thus, the competitive exclusion principle holds, and herbivore 2 is excluded. The reverse situation ($g_{11}<g_{21}$ and $g_{12}<g_{22}$) leads to the exclusion of herbivore 1. However, if the two herbivores are specialized on different plant species $g_{11}>g_{21}$ and $g_{12}<g_{22}$, or if $g_{11}<g_{21}$ and $g_{12}>g_{22}$, coexistence is possible. %Hence, in a case of a spatial segregation of the resource, the foraging strategy will be a crucial factor determining competition outcome. 
-In other words, despite that fact that herbivores compete for a single resource, as in case 1, the competitive exclusion principle does not necessarily hold. Indeed, each plant species represents a spatial segregation of the resource, and the specialization of herbivores on different plant species, similar to niche segregation in space, makes coexistence possible. 
+In other words, despite the fact that herbivores compete for a single resource, %as in case 1, 
+the competitive exclusion principle does not necessarily hold. Indeed, %each plant species represents a spatial segregation of the resource, 
+plants species create a spatial segregation of the resource, and the specialization of herbivores on different plant species, similar to niche segregation in space, makes coexistence possible. 
 
-\subsection*{Case 3: competition model with one plant species and several resources}
+\subsection*{Bottom-up stoichiometry}%{Case 3: competition model with one plant species and several resources}
 
-Consider $p$ herbivores feeding on one plant species embedding $k$ resources. According to the Liebig's law of the minimum expressed by the minimum function in equation 1, for each herbivore $i$ the interplay between resource requirement and resource availability will determine which resource is the most limiting for growth \citep{Grover1997}. Depending on their requirements, and on the ratios of resources available in plant biomass, two herbivores feeding on a single plant species may not be limited by the same resource. Thus, requirement differences among herbivores can be interpreted as niche segregation. Yet, as we shall see, this niche segregation does not allow coexistence when two herbivore species feed on a single plant species.\\ 
+Resource ratio in a given plant interacts with resource ratio of the herbivore, thus constraining persistence of herbivores. It is a bottom-up effect mediated by stoichiometry.
+Consider $p$ herbivores feeding on one plant species embedding $k$ resources. According to the Liebig's law of the minimum expressed by the minimum function in equation 1, for each herbivore $i$ the interplay between resource requirement and resource availability will determine which resource is the most limiting for growth \citep{Grover1997}. Depending on their requirements, and on the ratios of resources available in plant biomass, two herbivores feeding on a single plant species may not be limited by the same resource. Thus, requirement differences among herbivores can be interpreted as niche segregation. %Yet, as we shall see, this niche segregation does not allow coexistence when two herbivore species feed on a single plant species.\\ 
 For a single herbivore $i$, feeding on the plant, the level of limiting resource $R_u$ (with $u \in [1,k]$) in plant biomass at equilibrium writes (see appendix 3 for details):
 \begin{equation}\label{resourceoneplant}
 \barre{R}_{uhi}=\barre{V}|_{Ru}\; Q_{vRu} =\frac{m_i}{g_i}Q_{hiRu} 
@@ -141,7 +148,7 @@ Q_{vR_1}\\
 Q_{vR_2}
 \end{array}\right) 
 \end{equation}
-The vector’s slope is determined by the ratios of resources embedded in plant biomass. An important consequence is that all herbivores have the same slope of consumption vector when feeding on a single given plant. This constraint precludes coexistence, and the resource-ratio embedded in plant biomass determines which of the competitor will displace the other (figure \ref{herbifig}). Hence, despite niche segregation on the requirement axe, two herbivores cannot coexist on two resources. This result is in contrast with the classic resource-ratio theory, which stipulates that two consumer may coexist on two resources. The reason is that classically, consumers are assumed to control the slope of their consumption vector \citep{Tilman1982}. This assumption is valid for primary producers, which take up essential nutrients independently in their environment, in the form of dissolved chemical molecules, but not for herbivores, which take up essential nutrients already bounded in plant biomass.
+The vector’s slope is determined by the ratios of resources embedded in plant biomass. An important consequence is that all herbivores have the same slope of consumption vector when feeding on a single given plant. This constraint precludes coexistence, and the resource-ratio embedded in plant biomass determines which of the competitor will displace the other (figure \ref{herbifig}). Hence, despite niche segregation on the requirement axe, two herbivores cannot coexist on two resources. This result is in contrast with the classic resource-ratio theory, which stipulates that two consumer may coexist on two resources. The reason is that classically, consumers are assumed to control the slope of their consumption vector \citep{Tilman1982}. This assumption is valid for primary producers, which take up essential nutrients independently in their environment, in the form of dissolved chemical molecules, but not for herbivores, which take up essential nutrients already bounded in plant biomass. Therefore, niche segregation alone cannot promote coexistence. Only herbivore that can match plant stoichiometry the best can persist and outcompete other herbivores.
 
 \subsection*{Case 4: several plant species and several resources}
 
