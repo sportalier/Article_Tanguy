@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2011)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Article.aux
+The style file: AmNat.bst
+Database file #1: Article.bib
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--missing publisher in Gause1934
+You've used 38 entries,
+            3158 wiz_defined-function locations,
+            907 strings with 10195 characters,
+and the built_in function-call counts, 21256 in all, are:
+= -- 1815
+> -- 858
+< -- 28
++ -- 302
+- -- 253
+* -- 1410
+:= -- 3505
+add.period$ -- 156
+call.type$ -- 38
+change.case$ -- 272
+chr.to.int$ -- 39
+cite$ -- 39
+duplicate$ -- 1532
+empty$ -- 1605
+format.name$ -- 372
+if$ -- 4278
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 310
+newline$ -- 198
+num.names$ -- 152
+pop$ -- 582
+preamble$ -- 1
+purify$ -- 236
+quote$ -- 0
+skip$ -- 544
+stack$ -- 0
+substring$ -- 1096
+swap$ -- 662
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 324
+warning$ -- 1
+while$ -- 146
+width$ -- 0
+write$ -- 499
+(There was 1 warning)
