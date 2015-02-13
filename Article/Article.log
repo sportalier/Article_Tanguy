@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (TeX Live 2011) (format=xelatex 2011.7.3)  9 FEB 2015 18:58
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (TeX Live 2011) (format=xelatex 2011.7.3)  13 FEB 2015 14:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -433,19 +433,19 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 
 ] [2]
 [3] [4]
-Invalid UTF-8 byte or sequence at line 151 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 130 replaced by U+FFFD.
 Missing character: There is no � in font ec-lmr12!
- [5] [6] [7] [8] [9] [10] [11] (./Article.bbl [12] [13] [14]) [15]
+ [5] [6] [7] [8] [9] [10] [11] [12] (./Article.bbl [13] [14]) [15]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 329.
+(Font)              <10.95> on input line 334.
 
-Overfull \hbox (35.12292pt too wide) in paragraph at lines 329--343
+Overfull \hbox (35.12292pt too wide) in paragraph at lines 334--348
  [][] 
  []
 
 File: Conceptuel.pdf Graphic file (type QTm)
 <use  "Conceptuel.pdf" >
-Overfull \hbox (11.85184pt too wide) in paragraph at lines 369--370
+Overfull \hbox (11.85184pt too wide) in paragraph at lines 374--375
  [][] 
  []
 
@@ -477,6 +477,6 @@ Here is how much of TeX's memory you used:
  8290 multiletter control sequences out of 15000+200000
  54985 words of font info for 48 fonts, out of 3000000 for 9000
  1018 hyphenation exceptions out of 8191
- 44i,12n,43p,1498b,393s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,12n,43p,1498b,389s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on Article.pdf (20 pages).
