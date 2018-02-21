@@ -1,5 +1,5 @@
 \documentclass[12pt]{article}
-\usepackage[latin1]{inputenc}
+%\usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}  
 \usepackage{amsmath}
@@ -27,13 +27,21 @@
 \newcommand\unite[1]{\;\mathrm{#1/kg^{0.75}/day}}
 \newcolumntype{M}{>$ c <$}
 \newcommand\tit[1]{\multicolumn{1}{c|}{#1}} 
+
+\usepackage{setspace}
+\setstretch{2}
+
 \linenumbers
-\modulolinenumbers[2]
+%\modulolinenumbers[2]
 \bibliographystyle{AmNat}
 
 \usepackage{color}
 
 \begin{document}
+\begin{large}
+\noindent \textbf{Title}: Bottom-up stoichiometry at the base of the food-web: a resource-ratio approach applied to herbivore competition  
+\end{large}
+
 \section*{Abstract}
 
 Interspecific competition plays an important role in structuring communities but few studies have been done on herbivores. We present a competition model that predicts the outcome of competition between herbivore species competing for plants. Our model imbeds well-known concepts of the resource-ratio theory, such as the minimum level of resources, consumption vectors, and the quotas of resources required in the biomass. However, unlike traditional approaches that focused on plants as resources, we suggest that chemical elements and energy bounded in plant biomass represent the ultimate resources that herbivores compete for. Our model shows that the outcomes of competition between herbivores result from two main processes: the minimal requirement of resource for herbivores ($R^*$), and spatial segregation of resources embedded into different plants. The first process (minimal requirement) follows the classical $R^*$ rule and determines the competitive exclusion principle. On the other hand, foraging strategy of herbivores can allow coexistence because resources are spatially segregated. Put together, these two processes determine how herbivore species can coexist, since resources are bounded. Hence, a plant community rich in one resource should support an herbivore community rich in the same resource, leading to a bottom-up effect. 
@@ -43,9 +51,9 @@ Interspecific competition for resources is thought to play an important role in 
 However, the transfer of such a theory to higher trophic levels is not obvious. The main reason is that for heterotrophic organisms, resources are not easy to characterize. Consider for instance the case of herbivores. 
 If one considers that plant species are the resources herbivores compete for, questions arises: to what extent does a given herbivore require more of a given plant species than another? Should plant species be considered essential non-substitutable resources, or  substitutable resources? 
 For example, the diet of the red deer (\textit{Cervus elaphus}) in Europe includes 145 different plant species \citep{Gebert2001}. 
-How many of these species are really essential for red deer, and how many of the essential resources are substitutable? This question is a research topic in itself. As a consequence, predicting  competitive outcomes  in  heterotrophic communities with simple models remains extremely challenging and restricted to very to specific cases \citep{Murray2008}. This limitation may prevent significant progress in our understanding of community structure at higher trophic levels. \par 
+How many of these species are really essential for red deer, and how many of the essential resources are substitutable? This question is a research topic in itself. As a consequence, predicting  competitive outcomes  in  heterotrophic communities with simple models remains extremely challenging and restricted to very specific cases \citep{Murray2008}. This limitation may prevent significant progress in our understanding of community structure at higher trophic levels. \par 
 %We argue that if, on the other hand, one considers that nutrients and energy contained in plant biomass represent the resources, 
-In accordance with the theory of biological stoichiometry \citep{sterner2002}, we argue here that nutrients and energy contained in plant biomass rather than the plants themselves are the resources which limit the growth rate of herbivores and for which herbivores compete for. In this case, most of the upper-cited challenges disappear. Indeed, nutrients and energy  clearly are essential non-substitutable resources for heterotrophs. For example, nitrogen is required in proteins and nucleic acids, and phosphorous is required in phospholipids, nucleic acids, or bones. The number of essential nutrients required for heterotrophic organism biomass of heterotrophs does not exceed 26 \citep{sterner2002}. The fact that herbivore's growth rate may be limited by food quality (e.g., the level of nitrogen or phosphorus in plant biomass) rather than food quantity has been widely documented \citep{Sterner1992, Hessen1992, Urabe1992}. Moreover, it is possible  to determine the requirements of a given herbivore for a given element, using metabolism studies \citep{Mould1981}. In addition, it is clear that the ratios of nutrients required in the biomass vary across herbivore species. For example, the C:N:P ratio markedly varies among zooplanktonic herbivores \citep{Andersen1991, Sterner1992}. 
+In accordance with the theory of biological stoichiometry \citep{sterner2002}, we argue here that nutrients and energy contained in plant biomass rather than the plants themselves are the resources which limit the growth rate of herbivores and for which herbivores compete for. In this case, most of the upper-cited challenges disappear. Hence, nutrients and energy  clearly are essential non-substitutable resources for heterotrophs. For example, nitrogen is required in proteins and nucleic acids, and phosphorous is required in phospholipids, nucleic acids, or bones. The number of essential nutrients required for heterotrophic organism biomass of heterotrophs does not exceed 26 \citep{sterner2002}. The fact that herbivore's growth rate may be limited by food quality (e.g., the level of nitrogen or phosphorus in plant biomass) rather than food quantity has been widely documented \citep{Sterner1992, Hessen1992, Urabe1992}. Moreover, it is possible  to determine the requirements of a given herbivore for a given element, using metabolism studies \citep{Mould1981}. In addition, it is clear that the ratios of nutrients required in the biomass vary across herbivore species. For example, the C:N:P ratio markedly varies among zooplanktonic herbivores \citep{Andersen1991, Sterner1992}. 
 In table \ref{besoins}, we show that such a variation is observed as well in terrestrial herbivores. 
 %Therefore, a model based on chemical niche segregation can be pertinent. 
 Based on these observations, a competition model based on niche segregation across herbivore species along energy and nutrient axes appears perfectly relevant. All these arguments support the idea that the resource ratio theory could be applied to herbivores if one considers that just like plants, herbivores are ultimately limited by energy and nutrients (figure \ref{conceptualfigure}). \par 
@@ -58,55 +66,84 @@ In this paper, we introduce a theoretical framework that adapts  the classical r
 \section*{The model}
 Simulations and graphics were performed with the R software (R Development Core Team, 2013). Equations for isoclines and consumption vector slopes were found analytically, as well as stability of equilibrium points. Results were also tested with simulations using Runge-Kutta 4 approximation, from package deSolve \citep{Soetaert2010}. 
 
-The model includes $p$ herbivore species competing for $k$ resources embedded into $n$ plant species. For each resource $u$, each herbivore has its own specific requirement, and each plant contains its own resource availability. These requirements and availabilities are represented by quotas (i.e., quantity of resource per biomass unit). Hence, for an herbivore $i$, the biomass dynamic writes:
+The model includes $p$ herbivore species competing for $k$ resources embedded into $n$ plant species. For each resource $u$, each herbivore has its own specific requirement, and each plant has %contains 
+its own resource availability. These requirements and availabilities are represented by quotas (i.e., quantity of resource per biomass unit). Hence, for an herbivore $i$, the biomass dynamic writes:
 \begin{equation}\label{equaherbivoregeneral}
 \equa{H_i}= \left ( \mathrm{Min} \left \lbrace \frac{\displaystyle \sum ^n _{j=1} g_{ij} V_j Q_{vjR1}}{Q_{hiR1}}, \ldots,  \frac{\displaystyle \sum ^n _{j=1} g_{ij} V_j Q_{vjRk}}{Q_{hiRk}} \right \rbrace -m_i \right) H_i
 \end{equation}
-Where $H_i$ is herbivore $i$ biomass, $V_j$ is plant $j$ biomass, $g_{ij}$ is consumption rate of plant $j$ by herbivore $i$, $m_i$ is mortality rate of herbivore $i$, $Q_{vjRk}$ is the quota of resource $k$ into plant $j$ biomass (for example: $\text{g }R_k \text{/kg}$ of plant $j$), and $Q_{hiRk}$ is quota of resource $k$ into herbivore $i$ biomass (for example: $\text{g }R_k \text{/kg}$ of herbivore $i$). The ratio between herbivore and plant quotas sets influence of this chemical element on growth limitation for this herbivore. According to Liebig's law of minimum, the least available resource relative to herbivore requirements is assumed to be growth limiting. \\
+where $H_i$ is herbivore $i$ biomass, $V_j$ is plant $j$ biomass, $g_{ij}$ is consumption rate of plant $j$ by herbivore $i$, $m_i$ is mortality rate of herbivore $i$, $Q_{vjRk}$ is the quota of resource $k$ into plant $j$ biomass (for example: $\text{g }R_k \text{/kg}$ of plant $j$), and $Q_{hiRk}$ is quota of resource $k$ into herbivore $i$ biomass (for example: $\text{g }R_k \text{/kg}$ of herbivore $i$). The ratio between herbivore and plant quotas sets influence of this chemical element on growth limitation for this herbivore. According to Liebig's law of the minimum, the least available resource relative to herbivore requirements is assumed to be growth limiting. \par
 Plant biomass is:
 \begin{equation}\label{equaplantgeneral}
 \equa{V_j}=S_j-a_jV_j-\sum ^p _{i=1} g_{ij}V_jH_i
 \end{equation}
-Where $S_j$ is a function representing the increase of plant biomass (gross supply), $a_j$ is intrinsic loss per capita, such as senescence, the last term on the right represents consumption by herbivores. \\
+where $S_j$ is a function representing the increase of plant biomass (gross supply), $a_j$ is intrinsic loss per capita, such as senescence, the last term on the right represents consumption by herbivores. \par
 Resource availability is described as the plant biomass multiplied by the plant quota of the considered element.
 \begin{equation} \label{equaresourcegeneral}
 R_u=\sum ^n _{j=1} V_jQ_{vjRu}
 \end{equation}
 
 Table \ref{Parametres} represents a review of the state variables and the parameters used in the model. %We analyze the model step-by-step, starting from a simple case with herbivores competing for one plant and one resource, then several plants and one resource, then multiple resources embedded into one plant, and finally the complete model, with multiple resources embedded into multiple plants.
-Indeed, each plant provides several resources, and resources are provided by several plants. %, which create a new level of complexity.
-The first case is a stoichiometric balance issue between plant and herbivore, while the second case is a spatial segregation of resources.
+%Each plant provides several resources, and resources are provided by several plants. %, which create a new level of complexity.
+%The first case is a stoichiometric balance issue between plant and herbivore, while the second case is a spatial segregation of resources.
 
-\subsection*{Bottom-up stoichiometry}%Case 1: one plant species and one resource}
-%A given resources may be provided by only one plant or several plants, which creates a spatial segregation of resources. 
-Herbivores might compete for one or several resources. 
-First of all, consider a simple model with $p$ herbivore species feeding on one plant species embedding a single %chemical element 
-resource. 
-In case of one resource involved, this resource ($R$) is assumed to be growth limiting. 
+\section*{Results}
+Resources are provided by several plants, which is a spatial segregation of resources. But each plant provides several resources, which represents a stoichiometric balance issue between plant and herbivore. Spatial segregation and stoichimetric balance will first be studied separately then together. 
 
-For a matter of simplicity, in case of one plant and one resource, resource quota in plant biomass ($Q_{vjRk}$) is written $Q_{vR}$, and resource quota in herbivore $i$ biomass ($Q_{hiRk}$) is written $Q_{hiR}$. 
-At steady state, for any herbivore $i$, the model leads to the following equations (see appendix 1 for details):
-
-\begin{equation}
- \barre{H}_i=\frac{g_iQ_{vR}S-aQ_{hiR}m}{g_iQ_{hiR}m}
- \end{equation}
-Therefore, at equilibrium, herbivore biomass increases with plant availability (supply) and resource quota in plant biomass ($Q_{vR}$), while it decreases with herbivore mortality and resource quota in herbivore biomass ($Q_{hiR}$). Resource availability at steady state is: 
-\begin{equation}\label{oneresource}
-\barre{R}_{hi}=\barre{V}Q_{vR}=\frac{S}{a+g_i\barre{H}_i}Q_{vR}
+\subsection*{Spatial segregation of resources}
+Consider a limiting resource ($R$). %provided by $n$ plants. 
+Herbivores have access to this resource through the consumption of $n$ species of plants, depending on their feeding strategy.   
+Resource availability at steady state, for each herbivore, is (see appendix 2 for details):
+%At steady state, it is possible to calculate $\barre{R}_{hi}$ for each herbivore $i$ (see appendix 2 for details):
+\begin{equation}\label{oneresourcetwoplants}
+\barre{R}_{Hi}=\sum ^n _{j=1} \frac{S_j}{a_j+g_{ij}\barre{H}_i}Q_{v1R}
 \end{equation}
-This $\barre{R}_{hi}$ represents level of resource remaining available for another herbivore, it also represents the minimal threshold of resource availability for herbivore species $i$ (i.e., if resource availability is below this threshold this herbivore species cannot maintain a population at steady state). Indeed, it can be assimilated to Tilman's $R^*$.
-Therefore, considering two herbivores (species 1 and species 2), if $g_1\barre{H}_1>g_2\barre{H}_2$, species 1 depletes resource below the threshold of species 2, and species 2 is excluded. %Therefore, competition between two herbivore limited by the same chemical resource embedded into one plant leads to competitive exclusion. 
-In other words, the competitive exclusion principles holds, that is, no more than one herbivore species can persist on one limiting resource if this resource is provided by a single plant. In other words, plant stoichiometry has an impact herbivore competition, which is a bottom-up stoichiometric constraint. \par
+This $\barre{R}_{Hi}$ represents level of resource remaining available for another herbivore, it also represents the minimal threshold of resource availability for herbivore species $i$ (i.e., if resource availability is below this threshold this herbivore species cannot maintain a population at steady state). Hence, it can be assimilated to Tilman's $R^*$. \par
+For simplicity, consider the case where two herbivore species ($H_1$ and $H_2$) compete for one resource ($R$) embedded into two plants species ($V_1$ and $V_2$). Extending equation \ref{oneresourcetwoplants}, resource availabilities for each herbivore species at steady state write:
+\begin{equation}
+\barre{R}_{H1}=\frac{S_1}{a_1+g_{11}\barre{H}_1}Q_{v1R}+\frac{S_2}{a_2+g_{12}\barre{H}_1}Q_{v2R}
+\end{equation}
+and
+\begin{equation}
+\barre{R}_{H2}=\frac{S_1}{a_1+g_{21}\barre{H}_2}Q_{v1R}+\frac{S_2}{a_2+g_{22}\barre{H}_2}Q_{v2R}
+\end{equation}
+Clearly, the competition outcome is driven by the foraging strategies of the competitors, more specifically, on the efficiencies of their consumption functions ($g_{ij}$). If $g_{11}>g_{21}$ and $g_{12}>g_{22}$, herbivore 1 consumes both plants more efficiently than its competitor. Thus, the competitive exclusion principle holds, and herbivore 2 is excluded. The reverse situation ($g_{11}<g_{21}$ and $g_{12}<g_{22}$) leads to the exclusion of herbivore 1. However, if the two herbivores are specialized on different plant species ($g_{11}>g_{21}$ and $g_{12}<g_{22}$, or  $g_{11}<g_{21}$ and $g_{12}>g_{22}$), coexistence is possible. In other words, despite the fact that herbivores compete for a single resource, the competitive exclusion principle does not necessarily hold. Hence, plants species create a spatial segregation of the resource, and specialization of herbivores on different plant species, similar to niche segregation in space, makes coexistence possible.% because herbivores can overcome the %bottom-up 
+%stoichiometric constraint. 
+
+\subsection*{Bottom-up stoichiometry}
+Herbivores usually compete for several resources.  
+%First of all, consider a simple model with $p$ herbivore species feeding on one plant species embedding a single %chemical element 
+%resource. 
+%In case of one resource involved, this resource ($R$) is assumed to be growth limiting. 
+%
+%For a matter of simplicity, in case of one plant and one resource, resource quota in plant biomass ($Q_{vjRk}$) is written $Q_{vR}$, and resource quota in herbivore $i$ biomass ($Q_{hiRk}$) is written $Q_{hiR}$. 
+%At steady state, for any herbivore $i$, the model leads to the following equations (see appendix 1 for details):
+%
+%\begin{equation}
+% \barre{H}_i=\frac{g_iQ_{vR}S-aQ_{hiR}m}{g_iQ_{hiR}m}
+% \end{equation}
+%Therefore, at equilibrium, herbivore biomass increases with plant availability (supply) and resource quota in plant biomass ($Q_{vR}$), while it decreases with herbivore mortality and resource quota in herbivore biomass ($Q_{hiR}$). Resource availability at steady state is: 
+%\begin{equation}\label{oneresource}
+%\barre{R}_{hi}=\barre{V}Q_{vR}=\frac{S}{a+g_i\barre{H}_i}Q_{vR}
+%\end{equation}
+%This $\barre{R}_{hi}$ represents level of resource remaining available for another herbivore, it also represents the minimal threshold of resource availability for herbivore species $i$ (i.e., if resource availability is below this threshold this herbivore species cannot maintain a population at steady state). Indeed, it can be assimilated to Tilman's $R^*$.
+%Therefore, considering two herbivores (species 1 and species 2), if $g_1\barre{H}_1>g_2\barre{H}_2$, species 1 depletes resource below the threshold of species 2, and species 2 is excluded. %Therefore, competition between two herbivore limited by the same chemical resource embedded into one plant leads to competitive exclusion. 
+%In other words, the competitive exclusion principles holds, that is, no more than one herbivore species can persist on one limiting resource if this resource is provided by a single plant. In other words, plant stoichiometry has an impact herbivore competition, which is a bottom-up stoichiometric constraint. \par
 %Resource ratio in a given plant interacts with resource ratio of the herbivore, thus constraining persistence of herbivores. It is a bottom-up effect mediated by stoichiometry.
 According to the classical resource-ratio theory \citep{Tilman1982}, increasing the number of resources considered should promote coexistence between consumers.  
-Consider $p$ herbivores feeding on one plant species embedding $k$ resources. According to the Liebig's law of the minimum expressed by the minimum function in equation \ref{equaherbivoregeneral}, for each herbivore $i$ the interplay between resource requirement and resource availability will determine which resource is the most limiting for growth \citep{Grover1997}. Depending on their requirements, and on the ratios of resources available in plant biomass, two herbivores feeding on a single plant species may not be limited by the same resource. Thus, requirement differences among herbivores can be interpreted as niche segregation. %Yet, as we shall see, this niche segregation does not allow coexistence when two herbivore species feed on a single plant species.\\ 
+Consider $p$ herbivores feeding on one plant species embedding $k$ resources. According to the Liebig's law of the minimum expressed by the minimum function in equation \ref{equaherbivoregeneral}, for each herbivore $i$ the interplay between resource requirement and resource availability will determine which resource is the most limiting for growth \citep{Grover1997}. Depending on their requirements, and on the ratios of resources available in plant biomass, several herbivore species feeding on a single plant species may not be limited by the same resource. %Thus, requirement differences among herbivores can be interpreted as niche segregation. %Yet, as we shall see, this niche segregation does not allow coexistence when two herbivore species feed on a single plant species.\\ 
 \par
-For a single herbivore $i$, feeding on the plant, the level of limiting resource $R_u$ (with $u \in [1,k]$) in plant biomass at equilibrium writes (see appendix 3 for details):
+For a single herbivore $i$, feeding on one plant ($V$), the level of a limiting resource $R_u$ (with $u \in [1,k]$) in plant biomass at equilibrium writes (see appendix 3 for details):
 \begin{equation}\label{resourceoneplant}
-\barre{R}_{uhi}=\barre{V}|_{Ru}\; Q_{vRu} =\frac{m_i}{g_i}Q_{hiRu} 
+\barre{R}_{uHi}=\barre{V}|_{Ru}\; Q_{vRu} =\frac{m_i}{g_i}Q_{HiRu} 
 \end{equation}
-where $\barre{V}|_{Ru}$ is plant biomass at steady state when $R_u$ is limiting. Similarly to former cases, this level represents the level of resource available to another herbivore and is therefore a key driver of competitive outcomes. It can be graphically represented by a zero net growth isocline (ZNGI) in the phase space of the $k$ resources in plant biomass. One can also represent how resources are consumed by the herbivore with a consumption vector in this phase space \citep{Tilman1980}. As for the classical resource-ratio theory \citep{Tilman1982}, we will show here that this graphical representation is a valuable tool to address the competitive outcomes between herbivore species. \par
-For simplicity, consider two herbivore species ($H_1$ and $H_2$) competing for two resources ($R_1$ and $R_2$) embedded into a single plant species ($V$). According to equation \ref{resourceoneplant}, the slopes of the ZNGIs only depend on herbivore parameters, which are constant. Therefore, the ZNGIs are parallel to the axis on the phase plan $\{R_1,R_2\}$. According to the classical resource-ratio theory \citep{Tilman1982}, a first necessary condition for coexistence at equilibrium is that the ZNGIs of the two herbivores cross one another. A second necessary condition relies on the difference between the slopes of the consumption vectors of the competitors \citep{Tilman1982}.  The consumption vectors graphically illustrate how resource consumption drives the levels of resources from resource supply to equilibrium levels. In the phase plan, resource supply is represented by the supply point $S$, that is, the total amount of resources at equilibrium in absence of consumption:
+where $\barre{V}|_{Ru}$ is plant biomass at steady state when $R_u$ is limiting. %Similarly to former cases, 
+Similarly to the former case, this level represents the level of resource available to another herbivore and is therefore a key driver of competitive outcomes. It can be graphically represented by a zero net growth isocline (ZNGI) on the phase space of the $k$ resources in plant biomass. %One can also represent how resources are consumed by this herbivore with 
+Resource consumption by an herbivore is represented by a consumption vector \citep{Tilman1980}. As for the classical resource-ratio theory \citep{Tilman1982}, %we will show here that 
+this graphical representation is a valuable tool to address the competitive outcomes between herbivore species. \par
+For simplicity, consider two herbivore species ($H_1$ and $H_2$) competing for two resources ($R_1$ and $R_2$) embedded into a single plant species ($V$). According to equation \ref{resourceoneplant}, the slopes of the ZNGIs only depend on herbivore parameters, which are constant. Therefore, the ZNGIs are parallel to the axis on the phase plan $\{R_1,R_2\}$. %According to the classical resource-ratio theory \citep{Tilman1982}, 
+A first necessary condition for coexistence at equilibrium is that the ZNGIs of the two herbivores cross one another \citep{Tilman1982}, which implies that these herbivores are not limited by the same resource. 
+\par
+A second necessary condition relies on the difference between the slopes of the consumption vectors of the competitors \citep{Tilman1982}.  The consumption vectors graphically illustrate how resource consumption drives the levels of resources from resource supply to equilibrium levels. In the phase plan, resource supply is represented by the supply point $S$, which is the total amount of resources at equilibrium in absence of consumption:
 
 \begin{equation}
 S_{R_1}=Q_{vR_1}(S-a\barre{V})
@@ -127,29 +164,33 @@ Q_{vR_1}\\
 Q_{vR_2}
 \end{array}\right) 
 \end{equation}
-The vectorÕs slope is determined by the ratios of resources embedded in plant biomass. An important consequence is that all herbivores have the same slope of consumption vector when feeding on a single plant. This constraint precludes coexistence, and the resource-ratio embedded in plant biomass determines which of the competitor will displace the other (figure \ref{herbifig}). Hence, despite niche segregation on the requirement axe, two herbivores cannot coexist on two resources. This result is in contrast with the classical resource-ratio theory, which stipulates that two consumer may coexist on two resources. The reason is that classically, consumers are assumed to control the slope of their consumption vector \citep{Tilman1982}. This assumption is valid for primary producers, which take up essential nutrients independently in their environment, in the form of dissolved chemical molecules, but not for herbivores, which take up essential nutrients already bounded in plant biomass. Therefore, niche segregation alone cannot promote coexistence. Only herbivore that can match plant stoichiometry the best can persist and outcompete other herbivores. This leads to a strong bottom-up stoichiometric constraint.
+The vectorÕs slope is determined by the ratios of resources embedded in plant biomass. An important consequence is that all herbivores have the same slope of consumption vector when feeding on a single plant. This constraint precludes coexistence, and the resource-ratio embedded in plant biomass determines which of the competitor will displace the other (figure \ref{herbifig}). %Hence, despite niche segregation on the requirement axe, two herbivores cannot coexist on two resources. 
+Hence, despite differences in requirement, two herbivores cannot coexist on several resources.
+This result is in contrast with the classical resource-ratio theory, which stipulates that two consumer may coexist on two resources under certain conditions. The reason is that classically, consumers are assumed to control the slope of their consumption vector \citep{Tilman1982}. This assumption is valid for primary producers, which take up essential nutrients independently in their environment, in the form of dissolved chemical molecules, but not for herbivores, which take up essential nutrients already bounded in plant biomass. Therefore, %niche segregation alone cannot promote coexistence. Only 
+only the herbivore that can match plant stoichiometry the best can persist and outcompete other herbivores. This leads to a strong bottom-up stoichiometric constraint. 
+\par
 
 %\subsection*{Case 2: several plant species and one resource}
-\subsection*{Spatial segregation of resources}
-However, consider now %$p$ herbivore species competing for one resource ($R$) embedded into $n$ plants. 
-that a limiting resource ($R$) is provided by $n$ plants.
-Herbivores have access to the resource through the consumption of several species of plants, depending on their feeding strategy.   
-At steady state, it is possible to calculate $\barre{R}_{hi}$ for each herbivore $i$ (see appendix 2 for details):
-\begin{equation}\label{oneresourcetwoplants}
-\barre{R}_{hi}=\sum ^n _{j=1} \frac{S_j}{a_j+g_{ij}\barre{H}_i}Q_{v1R}
-\end{equation}
-For simplicity, consider the case where two herbivore species ($H_1$ and $H_2$) compete for one resource ($R$) embedded into two plants species ($V_1$ and $V_2$). Extending equation \ref{oneresourcetwoplants}, resource availabilities for each herbivore species at steady state are:
-\begin{equation}
-\barre{R}_{h1}=\frac{S_1}{a_1+g_{11}\barre{H}_1}Q_{v1R}+\frac{S_2}{a_2+g_{12}\barre{H}_1}Q_{v2R}
-\end{equation}
-and
-\begin{equation}
-\barre{R}_{h2}=\frac{S_1}{a_1+g_{21}\barre{H}_2}Q_{v1R}+\frac{S_2}{a_2+g_{22}\barre{H}_2}Q_{v2R}
-\end{equation}
-Clearly, the competition outcome depends on the foraging strategies of the competitors, more specifically, on the efficiencies of the consumption functions ($g_{ij}$). If $g_{11}>g_{21}$ and $g_{12}>g_{22}$, herbivore 1 consumes both plants more efficiently than its competitor. Thus, the competitive exclusion principle holds, and herbivore 2 is excluded. The reverse situation ($g_{11}<g_{21}$ and $g_{12}<g_{22}$) leads to the exclusion of herbivore 1. However, if the two herbivores are specialized on different plant species $g_{11}>g_{21}$ and $g_{12}<g_{22}$, or if $g_{11}<g_{21}$ and $g_{12}>g_{22}$, coexistence is possible. %Hence, in a case of a spatial segregation of the resource, the foraging strategy will be a crucial factor determining competition outcome. 
-In other words, despite the fact that herbivores compete for a single resource, %as in case 1, 
-the competitive exclusion principle does not necessarily hold. Indeed, %each plant species represents a spatial segregation of the resource, 
-plants species create a spatial segregation of the resource, and the specialization of herbivores on different plant species, similar to niche segregation in space, makes coexistence possible because herbivores can overcome the bottom-up stoichiometric constraint. 
+%\subsection*{Spatial segregation of resources}
+%However, consider now %$p$ herbivore species competing for one resource ($R$) embedded into $n$ plants. 
+%that a limiting resource ($R$) is provided by $n$ plants.
+%Herbivores have access to the resource through the consumption of several species of plants, depending on their feeding strategy.   
+%At steady state, it is possible to calculate $\barre{R}_{hi}$ for each herbivore $i$ (see appendix 2 for details):
+%\begin{equation}\label{oneresourcetwoplants}
+%\barre{R}_{hi}=\sum ^n _{j=1} \frac{S_j}{a_j+g_{ij}\barre{H}_i}Q_{v1R}
+%\end{equation}
+%For simplicity, consider the case where two herbivore species ($H_1$ and $H_2$) compete for one resource ($R$) embedded into two plants species ($V_1$ and $V_2$). Extending equation \ref{oneresourcetwoplants}, resource availabilities for each herbivore species at steady state are:
+%\begin{equation}
+%\barre{R}_{h1}=\frac{S_1}{a_1+g_{11}\barre{H}_1}Q_{v1R}+\frac{S_2}{a_2+g_{12}\barre{H}_1}Q_{v2R}
+%\end{equation}
+%and
+%\begin{equation}
+%\barre{R}_{h2}=\frac{S_1}{a_1+g_{21}\barre{H}_2}Q_{v1R}+\frac{S_2}{a_2+g_{22}\barre{H}_2}Q_{v2R}
+%\end{equation}
+%Clearly, the competition outcome depends on the foraging strategies of the competitors, more specifically, on the efficiencies of the consumption functions ($g_{ij}$). If $g_{11}>g_{21}$ and $g_{12}>g_{22}$, herbivore 1 consumes both plants more efficiently than its competitor. Thus, the competitive exclusion principle holds, and herbivore 2 is excluded. The reverse situation ($g_{11}<g_{21}$ and $g_{12}<g_{22}$) leads to the exclusion of herbivore 1. However, if the two herbivores are specialized on different plant species $g_{11}>g_{21}$ and $g_{12}<g_{22}$, or if $g_{11}<g_{21}$ and $g_{12}>g_{22}$, coexistence is possible. %Hence, in a case of a spatial segregation of the resource, the foraging strategy will be a crucial factor determining competition outcome. 
+%In other words, despite the fact that herbivores compete for a single resource, %as in case 1, 
+%the competitive exclusion principle does not necessarily hold. Indeed, %each plant species represents a spatial segregation of the resource, 
+%plants species create a spatial segregation of the resource, and the specialization of herbivores on different plant species, similar to niche segregation in space, makes coexistence possible because herbivores can overcome the bottom-up stoichiometric constraint. 
 
 %{Case 3: competition model with one plant species and several resources}
 
