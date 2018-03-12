@@ -1,4 +1,4 @@
-\begin{thebibliography}{38}
+\begin{thebibliography}{37}
 \providecommand{\natexlab}[1]{#1}
 
 \bibitem[{Albon and Langvatn(1992)}]{Albon1992}
@@ -162,11 +162,6 @@ Simpson, S.~J., and D.~Raubenheimer. 1995.
 Smith, S.~H., J.~B. Holter, H.~H. Hayes, and H.~Silver. 1975.
 \newblock Protein requirement of white-tailed deer fawns.
 \newblock Journal of Wildlife Management 39:582--589.
-
-\bibitem[{Soetaert et~al.(2010)Soetaert, Petzoldt, and Setzer}]{Soetaert2010}
-Soetaert, K., T.~Petzoldt, and R.~W. Setzer. 2010.
-\newblock Solving differential equations in r: Package desolve.
-\newblock Journal of Statistical Software 33:1--25.
 
 \bibitem[{Sterner and Elser(2002)}]{sterner2002}
 Sterner, R., and J.~Elser. 2002.

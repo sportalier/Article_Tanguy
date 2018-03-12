@@ -44,7 +44,9 @@
 
 \section*{Abstract}
 
-Interspecific competition plays an important role in structuring communities but few studies have been done on herbivores. We present a competition model that predicts the outcome of competition between herbivore species competing for plants. Our model imbeds well-known concepts of the resource-ratio theory, such as the minimum level of resources, consumption vectors, and the quotas of resources required in the biomass. However, unlike traditional approaches that focused on plants as resources, we suggest that chemical elements and energy bounded in plant biomass represent the ultimate resources that herbivores compete for. Our model shows that the outcomes of competition between herbivores result from two main processes: the minimal requirement of resource for herbivores ($R^*$), and spatial segregation of resources embedded into different plants. The first process (minimal requirement) follows the classical $R^*$ rule and determines the competitive exclusion principle. On the other hand, foraging strategy of herbivores can allow coexistence because resources are spatially segregated. Put together, these two processes determine how herbivore species can coexist, since resources are bounded. Hence, a plant community rich in one resource should support an herbivore community rich in the same resource, leading to a bottom-up effect. 
+%Interspecific competition plays an important role in structuring communities but few studies have been done on herbivores. We present a competition model that predicts the outcome of competition between herbivore species competing for plants. Our model imbeds well-known concepts of the resource-ratio theory, such as the minimum level of resources, consumption vectors, and the quotas of resources required in the biomass. However, unlike traditional approaches that focused on plants as resources, we suggest that chemical elements and energy bounded in plant biomass represent the ultimate resources that herbivores compete for. Our model shows that the outcomes of competition between herbivores result from two main processes: the minimal requirement of resource for herbivores ($R^*$), and spatial segregation of resources embedded into different plants. The first process (minimal requirement) follows the classical $R^*$ rule and determines the competitive exclusion principle. On the other hand, foraging strategy of herbivores can allow coexistence because resources are spatially segregated. Put together, these two processes determine how herbivore species can coexist, since resources are bounded. Hence, a plant community rich in one resource should support an herbivore community rich in the same resource, leading to a bottom-up effect. 
+
+Interspecific competition plays an important role in structuring communities but few studies have been done on herbivores. We present a competition model that predicts the outcome of competition between herbivore species competing for plants. Our model imbeds well-known concepts of the resource-ratio theory, such as the minimum level of resources, consumption vectors, and the quotas of resources in the biomass. However, unlike traditional approaches that focused on plants as resources, we suggest that chemical elements and energy bounded in plant biomass represent the ultimate resources that herbivores compete for. Our model shows that the outcomes of competition between herbivores result from two main processes. First, plants create a spatial segregation of resources, which may promote coexistence between herbivores according to their foraging strategies. Second, packaging of resources within plants creates a strong bottom-up stoichiometric constraint, which partially or totally drives the way herbivores consume resources. This packaging of resources also bounds resource availability. Together, these two processes determine how herbivore species may coexist. Hence, a plant community rich in one resource should support an herbivore community rich in the same resource, leading to a bottom-up effect.
 
 \section*{Introduction}
 Interspecific competition for resources is thought to play an important role in structuring communities \citep{Gause1934,Tilman1987}. Modelling approaches have proven helpful to predict competitive outcomes, when resources are well identified and the number of different resources is limited. Hence, the theory is particularly well suited for autotrophic organisms (e.g., algae or plants) competing for essential nutrients \citep{Tilman1982}. Indeed, nutrients (i.e., chemical elements constituting biomass) are well-identified non-substitutable resources, and usually, competition is acute for only a few limiting nutrients, such as, for instance, phosphorous (P), nitrogen (N), or potassium (K). In short, models  predict that niche  segregation  along  resource ratios should promote species coexistence. For example,  plants with low N:P requirement are more likely to coexist  with plants with high N:P requirement. \cite{Tilman1980} provided a graphical representation of these competition-coexistence processes based on Zero-Net-Growth Isoclines and consumption vectors, usually referred  to as the resource-ratio theory. In the last few decades, the resource-ratio theory has helped  popularize the use of competition models to predict competitive outcomes in experimental set ups and in  semi-natural conditions.\par 
@@ -64,22 +66,23 @@ In this paper, we introduce a theoretical framework that adapts  the classical r
 %The key point is that a given plant species provides to the herbivore an amount of resources at a given ratio determined by the plant itself. Consequently, an herbivore feeding on different plant species receives resources at different ratio. According to its own foraging strategy, this herbivore can find a pathway for covering its own requirements (see figure \ref{conceptualfigure}). \par
 
 \section*{The model}
-Simulations and graphics were performed with the R software (R Development Core Team, 2017). Equations for isoclines and consumption vector slopes were found analytically, as well as stability of equilibrium points. Results were also tested with simulations using Runge-Kutta 4 approximation, from package deSolve \citep{Soetaert2010}. 
+Simulations and graphics were performed with R software (R Development Core Team, 2017). Equations for isoclines and consumption vector slopes were found analytically, as well as stability of equilibrium points. Results were also tested with simulations. %using Runge-Kutta 4 approximation, from package deSolve \citep{Soetaert2010}. 
 
-The model includes $p$ herbivore species competing for $k$ resources embedded into $n$ plant species. For each resource $u$, each herbivore has its own specific requirement, and each plant has %contains 
-its own resource availability. These requirements and availabilities are represented by quotas (i.e., quantity of resource per biomass unit). Hence, for an herbivore $i$, the biomass dynamic writes:
+The model includes $p$ herbivore species competing for $k$ resources embedded into $n$ plant species. For each resource $u$, each herbivore $i$ has its own specific requirement, and each plant $j$ has %contains 
+its own resource availability. These requirements and availabilities are represented by quotas (i.e., quantity of resource per unit of biomass). Hence, for an herbivore $i$, the biomass dynamic writes:
 \begin{equation}\label{equaherbivoregeneral}
-\equa{H_i}=  \mathrm{Min} \left \lbrace \frac{\displaystyle \sum ^n _{j=1} g_{ij} V_j Q_{vjR1}}{Q_{hiR1}}, \ldots,  \frac{\displaystyle \sum ^n _{j=1} g_{ij} V_j Q_{vjRk}}{Q_{hiRk}} \right \rbrace H_i -m_i H_i
+\equa{H_i}=  \mathrm{Min} \left \lbrace \frac{\displaystyle \sum ^n _{j=1} g_{ij} V_j Q_{VjR1}}{Q_{HiR1}}, \ldots,  \frac{\displaystyle \sum ^n _{j=1} g_{ij} V_j Q_{VjRk}}{Q_{HiRk}} \right \rbrace H_i -m_i H_i
 \end{equation}
-where $H_i$ is herbivore $i$ biomass, $V_j$ is plant $j$ biomass, $g_{ij}$ is consumption rate of plant $j$ by herbivore $i$, $m_i$ is mortality rate of herbivore $i$, $Q_{vjRk}$ is the quota of resource $k$ into plant $j$ biomass (for example: $\text{g }R_k \text{/kg}$ of plant $j$), and $Q_{hiRk}$ is quota of resource $k$ into herbivore $i$ biomass (for example: $\text{g }R_k \text{/kg}$ of herbivore $i$). The ratio between herbivore and plant quotas for a given resource represents how this chemical element limits the growth of this herbivore. According to Liebig's law of the minimum, the least available resource relative to herbivore requirements (over the $k$ resources) is assumed to be growth limiting. \par
+where $H_i$ is herbivore $i$ biomass, $V_j$ is plant $j$ biomass, $g_{ij}$ is consumption rate of plant $j$ by herbivore $i$, $m_i$ is mortality rate of herbivore $i$, $Q_{VjRk}$ is the quota of resource $k$ into plant $j$ biomass (for example: $\text{g }R_k \text{/kg}$ of plant $j$), and $Q_{HiRk}$ is quota of resource $k$ into herbivore $i$ biomass (for example: $\text{g }R_k \text{/kg}$ of herbivore $i$). The ratio between herbivore and plant quotas for a given resource represents how this chemical element limits the growth of this herbivore. According to Liebig's law of the minimum, the least available resource relative to herbivore requirements (over the $k$ resources) is assumed to be growth limiting. \par
 Plant biomass is:
 \begin{equation}\label{equaplantgeneral}
 \equa{V_j}=S_j-a_jV_j-\sum ^p _{i=1} g_{ij}V_jH_i
 \end{equation}
-where $S_j$ is a function representing the increase of plant biomass (gross supply), $a_j$ is intrinsic loss per capita, such as senescence, the last term on the right represents consumption by herbivores. \par
+where $S_j$ is a function representing the increase of plant biomass (gross supply), $a_j$ is intrinsic loss per capita, such as senescence, the last term on the right represents consumption by herbivores. 
+\par
 Resource availability is described as the plant biomass multiplied by the plant quota of the considered element.
 \begin{equation} \label{equaresourcegeneral}
-R_u=\sum ^n _{j=1} V_jQ_{vjRu}
+R_u=\sum ^n _{j=1} V_jQ_{VjRu}
 \end{equation}
 
 Table \ref{Parametres} represents a review of the state variables and the parameters used in the model. %We analyze the model step-by-step, starting from a simple case with herbivores competing for one plant and one resource, then several plants and one resource, then multiple resources embedded into one plant, and finally the complete model, with multiple resources embedded into multiple plants.
@@ -246,7 +249,8 @@ g_{21}\barre{V}_1 Q_{V1R2}+g_{22}\barre{V}_2 Q_{V2R2}=m_2 Q_{H2R2}
 \end{equation}
 where $\barre{V}_1$ and $\barre{V}_2$ are biomass at equilibrium for plant 1 and 2 respectively. If system \ref{systemmaintext} leads to a realistic equilibrium point (plant biomasses and herbivores biomasses are all positive), then an equilibrium point exists. 
 \par
-Next, competition outcome will depend on the relative orientation of the consumption vector of herbivores \citep{Tilman1980}. For a given herbivore, the consumption vector slope writes:
+Next, competition outcome will depend on the relative orientation of the consumption vector of herbivores \citep{Tilman1980}. For a given herbivore, it is possible to determine a consumption vector that allows this herbivore to consume both resources when one is limiting, and leads to $\barre{V}_1$ and $\barre{V}_2$ at steady state. This boundary consumption vector slope writes (see appendix 3 for details):
+%the consumption vector slope writes:
 \begin{equation}
 \vec{C}_{Hi}= \barre{H}_i
 \begin{pmatrix}
@@ -254,79 +258,93 @@ g_{i1}\barre{V}_1Q_{V1R1}+g_{i2}\barre{V}_2Q_{V2R1} \\
 g_{i1}\barre{V}_1Q_{V1R2}+g_{i2}\barre{V}_2Q_{V2R2} \\
 \end{pmatrix} 
 \end{equation}
-It appears that this vector slope depends on $\barre{V}_1$ and $\barre{V}_2$, which themselves varies with plant supply points ($S_1$ and $S_2$). 
-%However, vector slope calculation is uneasy in the case of packaged resources because vector slope depends on plant supply points. 
-Hence, for a given herbivore in the case of packaged resources, vectors do not have a constant slope valid for all supply conditions. This is why instead of consumption vectors, the model allows the calculation of boundary vectors that determine an area in the phase plan where each herbivore species could coexist with the other one. 
+%It appears that this vector slope depends on $\barre{V}_1$ and $\barre{V}_2$, which themselves varies with plant supply points ($S_1$ and $S_2$). 
+%%However, vector slope calculation is uneasy in the case of packaged resources because vector slope depends on plant supply points. 
+%Hence, for a given herbivore in the case of packaged resources, vectors do not have a constant slope valid for all supply conditions. This is why instead of consumption vectors, the model allows the calculation of boundary vectors that determine an area in the phase plan where each herbivore species could coexist with the other one. 
+%\par
+%It is possible to determine a boundary relation between plant supply points ($S_1$ and $S_2$) that allows each herbivore $i$ to consume both resources when one resource is limiting, and leads to $\barre{V}_1$ and $\barre{V}_2$ at steady state. These boundary supply points are $\barre{S}_{1Hi}$ and $\barre{S}_{2Hi}$ for plant 1 and 2 respectively consumed by herbivore $i$ (see appendix 3 for details). 
+%\begin{equation}\label{supplymaintext}
+%\barre{S}_{2Hi}=(\barre{S}_{1Hi}-a_1)\frac{g_{i2}\barre{V}_2}{g_{i1}\barre{V}_1}+a_2\barre{V}_2
+%\end{equation}
+%Hence, boundary vector slopes are:
+%\begin{equation}
+%\vec{C}_{H1}= 
+%\begin{pmatrix}
+%\barre{S}_{1H1} \;Q_{V1R1}+\barre{S}_{2H1}\; Q_{V2R1} \\
+%\barre{S}_{1H1}\; Q_{V1R2}+\barre{S}_{2H1}\; Q_{V2R2} \\
+%\end{pmatrix} 
+%\end{equation}
+%\begin{equation}
+%\vec{C}_{H2}= 
+%\begin{pmatrix}
+%\barre{S}_{1H2} \;Q_{V1R1}+\barre{S}_{2H2}\; Q_{V2R1} \\
+%\barre{S}_{1H2}\; Q_{V1R2}+\barre{S}_{2H2}\; Q_{V2R2} \\
+%\end{pmatrix} 
+%\end{equation}
+These boundary vectors play a similar role as consumption vectors in Tilman's model. % (eq. \ref{supplymaintext}).  
+The slope varies with herbivore requirements, since they drive $\barre{V}_1$ and $\barre{V}_2$ (eq. \ref{systemmaintext}). It also appears that this vector slope varies with herbivore consumption functions ($g_{ij}$) but also with plant traits ($Q_{VjRk}$). Therefore, herbivores can partially control the slope of their consumption vector, but the bottom-up stoichiometry due to plant packaging of resources still plays a role. 
+%However, as resources are packaged into plants, vector slopes depend on the way herbivores feed on plants containing resources. 
+These two aspects (i.e., consumption and resource packaging) are key points to determine competition outcome. 
 \par
-It is possible to determine a boundary relation between plant supply points ($S_1$ and $S_2$) that allows each herbivore $i$ to consume both resources when one resource is limiting, and leads to $\barre{V}_1$ and $\barre{V}_2$ at steady state. These boundary supply points are $\barre{S}_{1Hi}$ and $\barre{S}_{2Hi}$ for plant 1 and 2 respectively consumed by herbivore $i$ (see appendix 3 for details). 
-\begin{equation}\label{supplymaintext}
-\barre{S}_{2Hi}=(\barre{S}_{1Hi}-a_1)\frac{g_{i2}\barre{V}_2}{g_{i1}\barre{V}_1}+a_2\barre{V}_2
-\end{equation}
-Hence, boundary vector slopes are:
-\begin{equation}
-\vec{C}_{H1}= 
-\begin{pmatrix}
-\barre{S}_{1H1} \;Q_{V1R1}+\barre{S}_{2H1}\; Q_{V2R1} \\
-\barre{S}_{1H1}\; Q_{V1R2}+\barre{S}_{2H1}\; Q_{V2R2} \\
-\end{pmatrix} 
-\end{equation}
-\begin{equation}
-\vec{C}_{H2}= 
-\begin{pmatrix}
-\barre{S}_{1H2} \;Q_{V1R1}+\barre{S}_{2H2}\; Q_{V2R1} \\
-\barre{S}_{1H2}\; Q_{V1R2}+\barre{S}_{2H2}\; Q_{V2R2} \\
-\end{pmatrix} 
-\end{equation}
-These two boundary vectors play a similar role as consumption vectors in Tilman's model. However, as resources are packaged into plants, vector slopes depend on the way herbivore species feed on plants containing resources (eq. \ref{supplymaintext}).  
-Hence, assuming plant 1 is richer in resource 1 ($Q_{V1R1}>Q_{V2R1}$), and plant 2 is richer in resource 2 ($Q_{V1R2}<Q_{V2R2}$), and assuming herbivore 1 is more limited by resource 1 ($Q_{H1R1}>Q_{H1R2}$), and herbivore 2 is more limited by resource 2 ($Q_{H2R1}<Q_{H2R2}$), two general strategies can be considered. The first one occurs when each herbivore species consumes preferentially the plant species which gives the greater quantity of the most limiting resource for this herbivore species, and which is less limiting for its competitor (i.e., $g_{11}>g_{12}$ and $g_{21}<g_{22}$). In that case, if we consider the boundary vectors for herbivore 1 and for herbivore 2, we can define several zones on the phase plan (see figure \ref{Coexistence}). The zone between the two boundary vectors represents the supply conditions allowing stable coexistence of the two herbivore species. Thus, each herbivore consumes the most profitable plant (i.e., quotas and consumption functions follow a similar trend), but each herbivore is specialized (more or less) on a different plant than its competitor, which promotes coexistence. 
+Hence, assuming plant 1 is richer in resource 1 ($Q_{V1R1}>Q_{V2R1}$), and plant 2 is richer in resource 2 ($Q_{V1R2}<Q_{V2R2}$), and assuming herbivore 1 is more limited by resource 1 ($Q_{H1R1}>Q_{H1R2}$), and herbivore 2 is more limited by resource 2 ($Q_{H2R1}<Q_{H2R2}$), two general strategies can be considered. The first one occurs when each herbivore species consumes preferentially the plant species which gives the greater quantity of the most limiting resource for this herbivore species, and which is less limiting for its competitor (i.e., $g_{11}>g_{12}$ and $g_{21}<g_{22}$). In that case, if we consider the boundary vectors for herbivore 1 and for herbivore 2, we can define several zones on the phase plan (see fig. \ref{Coexistence}). The zone between the two boundary vectors represents the supply conditions allowing stable coexistence of the two herbivore species. Thus, each herbivore consumes the most profitable plant according to its own needs (i.e., quotas and consumption functions follow a similar trend), %but each herbivore is specialized (more or less) on a different plant than its competitor, which promotes coexistence. 
+which promotes coexistence.
 \par
-The second case represents the reverse situation, where each herbivore species consumes preferentially the plant species which provides greater quantity of the most limiting resource for its competitor (i.e., $g_{11}<g_{12}$ and $g_{21}>g_{22}$). Hence, the zone between the boundary vectors does not allow coexistence (see fig.  \ref{Exclusion}), and in many cases system \ref{systemmaintext} does not have any realistic solution (with both herbivore species persisting). Thus, competitive exclusion is the general outcome. 
+The second case represents the reverse situation, where each herbivore species consumes preferentially the plant species which provides greater quantity of the most limiting resource for its competitor (i.e., $g_{11}<g_{12}$ and $g_{21}>g_{22}$). Hence, the zone between the boundary vectors does not allow coexistence (see fig.  \ref{Exclusion}), and in many cases system (\ref{systemmaintext}) does not have any solution where both herbivore species can persist together. Thus, competitive exclusion is the general outcome. 
 \par 
-
-Spatial segregation of resources embedded in plants and herbivore response to bottom-up stoichiometry are the two key points. If resources are not spatially decoupled or if herbivores do not have a feeding strategy that can compensate for the bottom-up stoichiometry imbalance, coexistence is impossible between herbivore species. The following cases illustrate this argument. 
-A first case occurs when herbivore species are not selective at all: they consume plant species according to their respective biomass. In that case, both herbivores consume resources in the same way (i.e., $g_{11}=g_{21}$ and $g_{12}=g_{22}$). Hence, there is no segregation in herbivore consumption: all herbivore species have the same consumption vector, which is similar to the case where only one plant species is present (see figure \ref{herbifig}). Therefore, the trajectory will either cross herbivore 1 ZNGI first, and this herbivore will be excluded, or the trajectory will cross herbivore 2 ZNGI first, and this herbivore will be excluded. %Only a particular case, where the trajectory leads exactly on the crossing point, allows coexistence. \par
-Coexistence will be unlikely because even if resources are spatially segregated, herbivores are constrained by plant stoichiometry. \par
-%If we release the previous assumptions on herbivore and plant quotas (i.e., inequality for herbivore requirements, and inequality for plant profitability), two other situations can potentially occur.
-A second case occurs when the previous assumptions on herbivore and plant quotas (i.e., inequality for herbivore requirements, and inequality for plant profitability) are released. %, which leads to two other situations.% can potentially occur.
-Therefore, both herbivores can have the same quotas (i.e., $Q_{h1R1}=Q_{h2R1}$ and $Q_{h1R2}=Q_{h2R2}$) but different consumption functions. In that case, one plant will be more interesting for both herbivores (i.e., the plant that is richer for the most limiting resource). Hence, the herbivore that can consume this plant the most efficiently will exclude its competitor. Again, bottom-up stoichiometry constrained herbivore coexistence. 
-Another case can occur when both plants have the same quotas (i.e., $Q_{v1R1}=Q_{v2R1}$ and $Q_{v1R2}=Q_{v2R2}$). In that case, the system is similar to the case where only one plant is present, which leads to competitive exclusion. Here, spatial segregation does not occur. \par
-Last, one can notice that plant stoichiometry constrains the supply point because of resource packaging into plants. 
-%Last, due to resource packaging into plants, the supply point is constrained. 
+One can notice that plant stoichiometry constrains the supply point because of resource packaging into plants. 
 Resource ratio within each plant will define a slope:
 \begin{equation}
-\alpha _{vj} = \frac{Q_{vjR2}}{Q_{vjR1}}
+\alpha _{Vj} = \frac{Q_{VjR2}}{Q_{VjR1}}
 \end{equation}
-In case of two plants, supply point will lie between the two extreme slopes ($\alpha _{v1}$ and $\alpha _{v2}$) defining a feasibility cone. Therefore, the whole phase plan is not available. Resource supply occurs only within this feasibility cone, which adds another constraint on herbivore persistence and competition. 
-
-\section*{Discussion}
-
-Unlike classical studies on herbivore competition we consider here that the resource limiting herbivores growth is not plant biomass but rather, the essential nutrients contained in plant biomass. 
-
-According to our results, the fundamental difference between herbivore competition and plant competition  is that resources 
- are not independent,  
-which leads to specific constraints for herbivores. Thus, several differences exist between classical resource-ratio theory of competition usually applied to plants \citep{Tilman1980} and our model for herbivores. 
-First, if  only one plant species is available, coexistence is almost impossible even if herbivore compete for several resources. Second, 
-ZNGI can be represented with boundary ZNGI delimiting resource levels at steady state. 
-
-Third, consumption vectors are not informative because their slope varies with supply points. However, boundary vectors can be calculated, and they play a similar role as usual consumption vectors. 
-Last, due to this packaging effect of resources and to plant quotas, resource availability itself is constrained. Hence, part of the phase plan might be unavailable. This is a major difference with models assuming a total independence between resources (such as N and P for plants) within which availabilities of resources can vary independently from one another. When resources are packaged, they are not independent. Thus, some supply couples (e.g., large quantity of $R_1$ and almost no $R_2$ available) is unlikely because plants will provide both resources (according to their own ratio).
-Hence,  
-parameter space allowing herbivore persistence can be narrower than predicted by its ZNGI and vector. \par
-More generally, existing theories about coexistence between herbivores are based on niche segregation. This segregation may depend on space utilization or on relationship between body size and metabolism \citep{Owen-Smith1982}. Our approach is different and allows us to disentangle the different mechanisms of niche segregation. We argue that coexistence between herbivores can occur by two ways, which are  diversity between foraging strategies as well as stoichiometric diversity between niches. 
-Diversity between foraging strategies is a spatially niche segregation within which each herbivore species consumes one plant species more than others, assuming that this plant species has the best profitability for this herbivore species. If this spatial segregation is total, with each herbivore species specialized on one plant species which is different from other competitors, coexistence occurs without other constraint than herbivore species-specific persistence. The second way is niche segregation based on resource ratios (i.e., a bottom-up stoichiometric component). 
-Although the packaging effect creates a supplementary level of complexity, divergence with classic resource-ratio models should not impede the rising of a clear conclusion: coexistence is favoured by requirement segregation as well as consumption segregation; only one of them (i.e., different requirements and similar consumptions, or similar requirements and different consumptions) is not enough. We retrieve here the two classical components of the niche theory \citep{Chase2003}: species requirement \citep{Hutchinson1957} and species impact \citep{Elton1927, Macarthur1967}. However, while these two components are clearly separated for competition between plants (i.e., ZNGI represent species requirements, and vectors represent species impact), these two components are merged for herbivore competition (boundary ZNGIs and boundary vectors involve both aspects).  \par 
-
-Nonetheless, our model allows us to disentangle the relative effects of the bottom-up stoichiometric component (i.e., plant and herbivore resource quotas) and the non-stoichiometric component (i.e., spatial segregation) of the competitive interaction. Indeed, the foraging strategy of the competing herbivores will mainly determine the competitive outcome. Non-selective herbivores (representing case 2 and case 4 with non-selective behavior) will show a strong bottom-up stoichiometric effect. Therefore, coexistence is unlikely. For example, non-selective zooplanktonic filters, such as cladocerans (limited by P) and copepods (limited by N), usually do not coexist: either one group or the other dominates according the N:P ratio of the consumed algae \citep{Andersen1991, Hessen1992, Sterner1992, Elser1996, Koski1999}. A similar assumption can be made for non-selective terrestrial grazer herbivores \citep{Albon1992} for which coexistence would be unlikely. On the other hand, selective herbivores, specialized on a few plants, would show a strong spatial component and a weaker stoichiometric component of the interaction (representing case 2 and case 4 with selective behavior). Therefore, they should be more prone to coexist. \par
-
-Concerning the stoichiometric component, our assumption is that a stoichiometric diversity between niches exists among herbivore species, and field studies tend to show it. For aquatic herbivores, such as zooplankton, it seems that grazers (especially \textit{Daphnia sp.}) are P-limited, while copepods seem to be N-limited (see above). This stoichiometric diversity exists for terrestrial herbivores either (see table \ref{besoins}). Chemical requirements %and diet strategy 
-for wild herbivores are mostly unknown, but for mammal herbivores, numerous studies have used data from cattle as proxy for diet requirement for wild species \citep{Voeten1999}. Nevertheless, data begins to be available. For example,  N requirements have been estimated for fawns \citep{Smith1975}, yearlings \citep{Holter1979} and adults \citep{Asleson1996} of white-tailed deer (\textit{Odocoileus virginianus}), as well as P requirement for white-tailed deer \citep{Grasman1993} and moose \citep{Schwartz1987}. Moreover, males from big species should be more concerned by P-limitation \citep{Grasman1993}. More generally, it seems that nutrient requirement and absorption constraint depend on body size and digestive system \citep{Janis1976}. \par 
-Concerning the spatial component and the foraging strategy, several studies have been done, mainly on terrestrial herbivore species. It seems that most of  migrated species adopt an extraction maximizing strategy: through seasons, they move from places to places that have a large amount of nutritive quality elements \citep{Albon1992}. 
-There, they can find plant communities with a high proportion of nutritional plant species. They adopt this strategy rather than selecting nutritious species within communities \citep{Ben-Shahar1992}.
-On the other hand, resident species mostly adopt a demand minimizing strategy: sometimes, they have a low metabolic rate, and flexible breeding period, which allow them to decrease demand in energy during dry period \citep{Murray1991}. Moreover, for continental herbivore species, the diet quality decreases when body size increases, especially during dry season \citep{Codron2007}. 
+In case of two plants, supply point will lie between the two extreme slopes ($\alpha _{V1}$ and $\alpha _{V2}$) defining a feasibility cone (see fig. \ref{Coexistence} and \ref{Exclusion}). Resource supply occurs only within this feasibility cone instead of the whole phase plan, which adds another constraint on herbivore persistence and competition. 
+\par
+Consumption functions allow herbivores to partially drive the way they consume resources. However, if 
+%A first case occurs when 
+herbivores are not selective at all, then they consume plants according to their respective biomass. In that case, both herbivores consume resources in the same way (i.e., $g_{11}=g_{21}$ and $g_{12}=g_{22}$). Hence, there is no segregation in herbivore consumption: all herbivores have the same consumption vector, which is similar to the case where only one plant species is present (see fig. \ref{herbifig}). Therefore, the trajectory will either cross herbivore 1 ZNGI first, and this herbivore will be excluded, or the trajectory will cross herbivore 2 ZNGI first, and this herbivore will be excluded. %Only a particular case, where the trajectory leads exactly on the crossing point, allows coexistence. \par
+Coexistence will be unlikely because even if resources are spatially segregated, herbivores are constrained by plant stoichiometry. 
+\par
+%If we release the previous assumptions on herbivore and plant quotas (i.e., inequality for herbivore requirements, and inequality for plant profitability), two other situations can potentially occur.
+%A second case occurs when the previous assumptions on herbivore and plant quotas (i.e., inequality for herbivore requirements, and inequality for plant profitability) are released. %, which leads to two other situations.% can potentially occur.
+%Therefore, 
+Resource packaging is a strong driver for competition. Let's consider the case where both herbivores have the same quotas (i.e., $Q_{H1R1}=Q_{H2R1}$ and $Q_{H1R2}=Q_{H2R2}$) but different consumption functions. In that case, one plant is richer for the most limiting resource, and %will be more interesting for both herbivores (i.e., the plant that ). Hence, 
+the herbivore that can consume this plant the most efficiently will exclude its competitor. %Again, bottom-up stoichiometry constrained herbivore coexistence. 
+%Another case can occur when both plants have the same quotas (i.e., $Q_{v1R1}=Q_{v2R1}$ and $Q_{v1R2}=Q_{v2R2}$). In that case, the system is similar to the case where only one plant is present, which leads to competitive exclusion. Here, spatial segregation does not occur. 
 \par
 
-However, there are some limits to this model. We pay only attention to the requirement for a given herbivore species. But we do not consider what happens in case of an overconsumption of a non-limiting nutrient. In fact, we can have a more physiological approach. Considering the case where an herbivore species consuming a plant species that gives a small amount of a limiting nutrient and a large amount of a non-limiting nutrient, one can argue that an excretion cost might exist  for this nutrient. This can limit the amount of plant consumed by this herbivore species.\par 
-Finally, this model gives an interesting conclusion. The stoichiometric constraints should go up through the trophic chain. It means that, on a soil that is poor in a given nutrient (e.g., nitrogen), we should find plant species that can survive with a poor availability  for this nutrient. Then, they contain a small amount of this nutrient and they will sustain herbivore species that are poor in this nutrient, leading to a strong bottom-up effect. 
+\section*{Discussion}
+Unlike classical studies on herbivore competition we consider here that the resource limiting herbivores growth is not plant biomass but rather, the essential nutrients contained in plant biomass. 
+Since resources are not independent, several differences exist between classical resource-ratio theory of competition usually applied to plants \citep{Tilman1980} and our model for herbivores.  %the fundamental difference between herbivore competition and plant competition  is that   
+%which leads to specific constraints for herbivores. %Thus, . 
+%First, if  only one plant species is available, coexistence is almost impossible even if herbivore compete for several resources. Second, 
+%ZNGI can be represented with boundary ZNGI delimiting resource levels at steady state. 
+\par
+First, plants represent a spatial segregation of resources. Thus, even if herbivores compete for the same resources, a specialized consumption on different plants may promote coexistence. Second, resource packaging into plants has a strong impact on the way herbivores consume resources, which is a bottom-up stoichiometry. Thus, if two herbivores consume the same plant, they will show the same consumption vector, which means that the plant drives resource consumption by herbivores. 
+Last, the general case where herbivores compete for several resources provided by several plants, consumption strategy of herbivores plays a role and allows herbivores to partially drive competition outcome. However, bottom-up stoichiometry is still a key driver for competition and constrains the realized parameter space. This is a major difference with models assuming a total independence between resources (such as N and P for plants) within which availabilities of resources can vary independently from one another. When resources are packaged, they are not independent. Thus, some supply couples (e.g., large quantity of $R_1$ and almost no $R_2$ available) is unlikely because plants will provide both resources (according to their own ratio). Hence, parameter space allowing herbivore persistence can be narrower than predicted by its ZNGI and vector.
+\par
+%Third, consumption vectors are not informative because their slope varies with supply points. However, boundary vectors can be calculated, and they play a similar role as usual consumption vectors. 
+%Last, due to this packaging effect of resources and to plant quotas, resource availability itself is constrained. Hence, part of the phase plan might be unavailable. This is a major difference with models assuming a total independence between resources (such as N and P for plants) within which availabilities of resources can vary independently from one another. When resources are packaged, they are not independent. Thus, some supply couples (e.g., large quantity of $R_1$ and almost no $R_2$ available) is unlikely because plants will provide both resources (according to their own ratio).
+%Hence,  
+%parameter space allowing herbivore persistence can be narrower than predicted by its ZNGI and vector. \par
+More generally, existing theories about coexistence between herbivores are based on niche segregation. This segregation may depend on space utilization or on relationship between body size and metabolism \citep{Owen-Smith1982}. Our approach is different and allows us to disentangle the different mechanisms of niche segregation. We argue that coexistence between herbivores can occur by two ways, which are  diversity between foraging strategies as well as stoichiometric diversity between niches. Diversity between foraging strategies is a spatially niche segregation within which each herbivore species consumes one plant species more than others, assuming that this plant species has the best profitability for this herbivore species. If this spatial segregation is total, with each herbivore species specialized on one plant species which is different from other competitors, coexistence occurs without other constraint than herbivore species-specific persistence. 
+\par
+The second way is niche segregation based on resource ratios (i.e., a bottom-up stoichiometric component). Although the packaging of resources within plants creates a supplementary level of complexity, divergence with classic resource-ratio models should not impede the rising of a clear conclusion: coexistence is favoured by segregation in requirements and consumption; only one of them (i.e., different requirements and similar consumption, or similar requirements and different consumption) is not enough. We retrieve here the two classical components of the niche theory \citep{Chase2003}: species requirement \citep{Hutchinson1957} and species impact \citep{Elton1927, Macarthur1967}. However, while these two components are clearly separated for competition between plants (i.e., ZNGIs represent species requirements, and vectors represent species impact), these two components are merged for herbivore competition (boundary vectors involve both aspects). Moreover, in classical theory, both ZNGIs and vectors are only driven by the consumer (the plant), while consumption by herbivore is partially driven by the consumed plant (bottom-up stoichiometry). 
+\par 
+%Spatial segregation of resources embedded in plants and herbivore response to bottom-up stoichiometry are the two key points. If resources are not spatially decoupled or if herbivores do not have a feeding strategy that can compensate for the bottom-up stoichiometry imbalance, coexistence is impossible between herbivore species. The following cases illustrate this argument. 
+%the bottom-up stoichiometric component (i.e., plant and herbivore resource quotas) and the non-stoichiometric component (i.e., spatial segregation) of competitive interaction. Indeed, (representing case 2 and case 4 with non-selective behavior) (representing case 2 and case 4 with selective behavior)
+Our model allows us to disentangle the relative effects of the bottom-up stoichiometric constraint and the spatial segregation of resources. Hence, the foraging strategy of competing herbivores will mainly determine the competitive outcome. On the one hand, non-selective herbivores (feeding on a single plant species or showing a non-selective feeding behavior) will show a strong bottom-up stoichiometric effect. Therefore, coexistence is unlikely. For example, non-selective zooplanktonic filters, such as cladocerans (limited by P) and copepods (limited by N), usually do not coexist: either one group or the other dominates according the N:P ratio of the consumed algae \citep{Andersen1991, Hessen1992, Sterner1992, Elser1996, Koski1999}. A similar assumption can be made for non-selective terrestrial grazer herbivores \citep{Albon1992} for which coexistence would be unlikely. On the other hand, selective herbivores, specialized on a few plants, would show a strong spatial component and a weaker stoichiometric component of competition. Therefore, they should be more prone to coexist. 
+\par
+%Concerning the stoichiometric component, our assumption is that a , and  it
+Field studies tend to show that stoichiometric diversity between niches exists among herbivore species. Among aquatic herbivores, such as herbivorous zooplankton, it seems that grazers (especially \textit{Daphnia sp.}) are P-limited, while copepods seem to be N-limited (see above). This stoichiometric diversity exists for terrestrial herbivores either (see table \ref{besoins}). Chemical requirements %and diet strategy 
+for wild herbivores are mostly unknown, but for mammal herbivores, numerous studies have used data from cattle as proxy for diet requirement for wild species \citep{Voeten1999}. Nevertheless, data begins to be available. For example,  N requirements have been estimated for fawns \citep{Smith1975}, yearlings \citep{Holter1979} and adults \citep{Asleson1996} of white-tailed deer (\textit{Odocoileus virginianus}), as well as P requirement for white-tailed deer \citep{Grasman1993} and moose \citep{Schwartz1987}. Moreover, males from large species should be more prone to P-limitation \citep{Grasman1993}. More generally, it seems that nutrient requirement and constraints for absorption vary with body size and digestive system \citep{Janis1976}. 
+\par 
+%Concerning the spatial component and the foraging strategy, 
+Several studies have been done on foraging strategy and spatial segregation of resources, mainly on terrestrial herbivore species. On the one hand, it seems that most of  migratory species adopt an extraction maximizing strategy: through seasons, they move from places to places that have a large amount of nutritive quality elements \citep{Albon1992}. There, they can find plant communities with a high proportion of nutritional plant species. They adopt this strategy rather than selecting nutritious species within communities \citep{Ben-Shahar1992}. According to our model, this feeding strategy is likely to lead to competitive exclusion. However, migration allow these species to switch from nutrient sources to others, which decreases likelihood of exclusion. On the other hand, resident species mostly adopt a demand minimizing strategy: some species have a low metabolic rate, and flexible breeding period, which allow them to decrease demand in energy during dry period \citep{Murray1991}. Moreover, for continental herbivore species, the diet quality decreases when body size increases, especially during dry season \citep{Codron2007}. 
+\par
+%However, there are some limits to this model. 
+We pay only attention to the requirements for a given herbivore species, but we do not consider what happens in case of an overconsumption of a non-limiting nutrient. In fact, a more physiological approach can be proposed. If an herbivore species feeds on a plant species that gives a small amount of a limiting nutrient and a large amount of a non-limiting nutrient, one can argue that an excretion cost might exist  for this nutrient. This can limit the amount of plant consumed by this herbivore species.
+\par 
+Finally, this model leads to an interesting conclusion. The stoichiometric constraints should go up through the trophic chain. It means that, on a soil that is poor in a given nutrient (e.g., nitrogen), we should find plant species that can survive with a poor availability  for this nutrient. Then, %they contain a small amount of this nutrient 
+they will provide a small amount of this nutrient to consumer, thus sustaining herbivore species that are poor in this nutrient, leading to a strong bottom-up effect throughout the whole food chain. 
 
 \section*{Appendix 1}
 When $p$ herbivores compete for a limiting resource $R$ provided by $n$ plants, equations  \ref{equaherbivoregeneral}, \ref{equaplantgeneral} and \ref{equaresourcegeneral} respectively write:
@@ -435,41 +453,43 @@ g_{21}\barre{V}_1 Q_{V1R2}+g_{22}\barre{V}_2 Q_{V2R2}=m_2 Q_{H2R2}
 If system (\ref{Systeme}) has two realistic solutions (i.e., $\barre{V}_1 > 0$ and $\barre{V}_2 > 0$), and if these equilibrium plant biomasses allow both herbivores to persist (i.e., $\barre{H}_1>0$ and $\barre{H}_2 >0$), %which means that both herbivores can persist at steady state, 
 then coexistence occurs at that equilibrium point. %Therefore, this point is an equilibrium point. 
 \par
-Stability of this equilibrium point can usually be determined by consumption vectors. Knowing $\barre{V}_1$ and $\barre{V}_2$ at this equilibrium point, it is possible to determine a boundary relation between plant supply points ($S_1$ and $S_2$) that allows herbivore 1 to consume both resources when $R_1$ is limiting, and leads to $\barre{V}_1$ and $\barre{V}_2$ at steady state. Similarly, we can determine a relation that allows herbivore 2 to consume both resources when $R_2$ is limiting, and leads to $\barre{V}_1$ and $\barre{V}_2$. The relations are:
-\stepcounter{equation}
+Stability of this equilibrium point can usually be determined by consumption vectors. Knowing $\barre{V}_1$ and $\barre{V}_2$ at this equilibrium point, it is possible to determine a boundary consumption vector that %relation between plant supply points ($S_1$ and $S_2$) that 
+allows herbivore 1 to consume both resources when $R_1$ is limiting, and leads to $\barre{V}_1$ and $\barre{V}_2$ at steady state. Similarly, we can determine a %relation 
+boundary consumption vector that allows herbivore 2 to consume both resources when $R_2$ is limiting, and leads to $\barre{V}_1$ and $\barre{V}_2$. %The relations are:
+%\stepcounter{equation}
+%\begin{equation}
+%\barre{S}_{2H1}=(\barre{S}_{1H1}-a_1)\frac{g_{12}\barre{V}_2}{g_{11}\barre{V}_1}+a_2\barre{V}_2 \tag{\theequation A}
+%\end{equation}
+%\stepcounter{equation}
+%\begin{equation}
+%\barre{S}_{2H2}=(\barre{S}_{1H2}-a_1)\frac{g_{22}\barre{V}_2}{g_{21}\barre{V}_1}+a_2\barre{V}_2 \tag{\theequation A}
+%\end{equation}
+%Where $S_{1H1}$ and $S_{2H1}$ are the boundary supply points for plant 1 and 2 respectively for herbivore 1. Similarly, $S_{1H2}$ and $S_{2H2}$ are boundary supply points for herbivore 2.
+The boundary vector slopes write:
 \begin{equation}
-\barre{S}_{2H1}=(\barre{S}_{1H1}-a_1)\frac{g_{12}\barre{V}_2}{g_{11}\barre{V}_1}+a_2\barre{V}_2 \tag{\theequation A}
+\vec{C}_{H1}= 
+\begin{pmatrix}
+g_{11}\barre{H}_1\barre{V}_{1}Q_{V1R1}+g_{12}\barre{H}_1\barre{V}_{2}Q_{V2R1} \\
+g_{11}\barre{H}_1\barre{V}_{1}Q_{V1R2}+g_{12}\barre{H}_1\barre{V}_{2}Q_{V2R2} \\
+\end{pmatrix} 
+=\barre{H}_1
+\begin{pmatrix}
+g_{11}\barre{V}_{1}Q_{V1R1}+g_{12}\barre{V}_{2}Q_{V2R1} \\
+g_{11}\barre{V}_{1}Q_{V1R2}+g_{12}\barre{V}_{2}Q_{V2R2} \\
+\end{pmatrix} 
 \end{equation}
-\stepcounter{equation}
 \begin{equation}
-\barre{S}_{2H2}=(\barre{S}_{1H2}-a_1)\frac{g_{22}\barre{V}_2}{g_{21}\barre{V}_1}+a_2\barre{V}_2 \tag{\theequation A}
+\vec{C}_{H2}= \barre{H}_2
+\begin{pmatrix}
+g_{21}\barre{V}_{1}Q_{V1R1}+g_{22}\barre{V}_{2}Q_{V2R1} \\
+g_{21}\barre{V}_{1}Q_{V1R2}+g_{22}\barre{V}_{2}Q_{V2R2} \\
+\end{pmatrix} 
 \end{equation}
-Where $S_{1H1}$ and $S_{2H1}$ are the boundary supply points for plant 1 and 2 respectively for herbivore 1. Similarly, $S_{1H2}$ and $S_{2H2}$ are boundary supply points for herbivore 2.
-
+Vector slopes depend on both herbivore and plant parameters. 
 \bibliography{Article}
 
 \clearpage
-\begin{table}[h]
-\centering
-\caption{Minimum daily intake requirements of digestible protein (DP) and phosphorus (P) for four grazer species of different body weight (BW in kg). Modified from \cite{Treydte2009}. }
-\begin{small}
-\begin{tabular}{|*{2}{c|}*{4}{M|}}
-\hline 
-\multicolumn{1}{|c|}{Intake} & \tit{Model scenario} & \tit{Warthog} & \tit{Wildebeest} & \tit{Zebra} & \tit{Buffalo} \\
-\multicolumn{1}{|c|}{($\mathrm{mg/kg\; BW/day}$)} & \tit{source} & \tit{$83 \;\mathrm{kg\; BW}$} & \tit{$143 \;\mathrm{kg\; BW}$} & \tit{$271 \;\mathrm{kg\; BW}$} & \tit{$481 \;\mathrm{kg\; BW}$} \\ \hline 
-\multicolumn{1}{|c|}{\multirow{3}*{DProtein}} & \cite{ARC1980}  & 730 & 550 & 430 & 380 \\
-& \cite{Menard2002}  & 970 & 850 & 720 & 630 \\
-& \cite{Ludwig2003}  & 1040 & 910 & 770 & 680 \\ \hline 
-\multicolumn{1}{|c|}{\multirow{2}*{P}} & \cite{ARC1980}  & 9 & 14 & 18 & 20 \\
-& \cite{Menard2002}  & 13 & 27 & 37 & 42 \\
-\hline 
-DProtein:P ratio & & 83 & 38 & 23 & 18  \\ \hline
-\end{tabular}
-\end{small}
-\label{besoins}
-\end{table}
 
-\vspace{2 cm}
 \begin{table}[h]
 \centering
 \caption{State variables and parameters used in the model. Dimensions for each variable and parameter are based on mass (M) and time (T).}
@@ -491,6 +511,29 @@ Q_{VjRu} & resource $u$ quota for plant $j$ & $\text{M.M}^{-1}$ \\ \hline
 \label{Parametres} 
 \end{table}
 
+\clearpage
+%\vspace{2 cm}
+\begin{table}[h]
+\centering
+\caption{Minimum daily intake requirements of digestible protein (DP) and phosphorus (P) for four grazer species of different body weight (BW in kg). Modified from \cite{Treydte2009}. }
+\begin{small}
+\begin{tabular}{|*{2}{c|}*{4}{M|}}
+\hline 
+\multicolumn{1}{|c|}{Intake} & \tit{Model scenario} & \tit{Warthog} & \tit{Wildebeest} & \tit{Zebra} & \tit{Buffalo} \\
+\multicolumn{1}{|c|}{($\mathrm{mg/kg\; BW/day}$)} & \tit{source} & \tit{$83 \;\mathrm{kg\; BW}$} & \tit{$143 \;\mathrm{kg\; BW}$} & \tit{$271 \;\mathrm{kg\; BW}$} & \tit{$481 \;\mathrm{kg\; BW}$} \\ \hline 
+\multicolumn{1}{|c|}{\multirow{3}*{DProtein}} & \cite{ARC1980}  & 730 & 550 & 430 & 380 \\
+& \cite{Menard2002}  & 970 & 850 & 720 & 630 \\
+& \cite{Ludwig2003}  & 1040 & 910 & 770 & 680 \\ \hline 
+\multicolumn{1}{|c|}{\multirow{2}*{P}} & \cite{ARC1980}  & 9 & 14 & 18 & 20 \\
+& \cite{Menard2002}  & 13 & 27 & 37 & 42 \\
+\hline 
+DProtein:P ratio & & 83 & 38 & 23 & 18  \\ \hline
+\end{tabular}
+\end{small}
+\label{besoins}
+\end{table}
+
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=12 cm, keepaspectratio, angle=-90]{Conceptuel} %angle=-90
@@ -500,21 +543,22 @@ Q_{VjRu} & resource $u$ quota for plant $j$ & $\text{M.M}^{-1}$ \\ \hline
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=14cm,keepaspectratio]{1plant} 
-\caption{Phase plan with two herbivore species feeding on one plant species. Black solid lines are herbivore 1 ZNGI, dotted lines are herbivore 2 ZNGI, and grey arrow is the common consumption vector. Interpretations are quite similar with those from Tilman's model \citep{Tilman1982}. Roman numbers represent different zones for supply point position. Zone I and zone V do not provide sufficient amounts in $R_1$ and $R_2$ respectively. None herbivore species can live in these conditions. Zone II contains enough quantities of $R_1$ for herbivore 1, but not for herbivore 2. Zone III potentially has enough quantities of both resources for both herbivore species. In zone IV, only herbivore 2 can survive because there is not enough $R_2$ for herbivore 1. Supply point represents total amount of resources due to plant biomass rebuilding. Both herbivore species sample resources through the same consumption vector. In this exemple, the trajectory cross herbivore 2 ZNGY first and then herbivore 1 ZNGI. The crossing point with herbivore 1 ZNGI becomes an equilibrium point (E). Herbivore 1 is limited by $R_2$. Herbivore 2 is excluded.}
+\includegraphics[width=15 cm,keepaspectratio]{TwoHerbivoresOnePlant}%{1plant} 
+\caption{Phase plan with two herbivore species feeding on one plant species. Black solid lines are herbivore 1 ZNGIs, dotted lines are herbivore 2 ZNGIs, and grey arrow is the common consumption vector. Interpretations are quite similar with those from Tilman's model \citep{Tilman1982}. Roman numbers represent different zones for supply point position. Zone I and zone V do not provide sufficient amounts in $R_1$ and $R_2$ respectively. None herbivore species can live in these conditions. Zone II contains enough $R_1$ for herbivore 1, but not for herbivore 2. Zone III potentially has enough quantities of both resources for both herbivore species. In zone IV, only herbivore 2 can survive because there is not enough $R_2$ for herbivore 1. Supply point represents the total amount of resources due to plant biomass rebuilding. Both herbivore species sample resources through the same consumption vector since resource ratio between $R_1$ and $R_2$ is driven by the plant. In this exemple, the trajectory crosses herbivore 2 ZNGI first and then herbivore 1 ZNGI. The crossing point with herbivore 1 ZNGI becomes an equilibrium point (E). Herbivore 1 is limited by $R_2$. Herbivore 2 is excluded.}
 \label{herbifig}
 \end{figure}
 
 \begin{figure}[h]
-\includegraphics[width=15 cm, keepaspectratio]{Coexistence}
-\caption{Phase plan for two coexisting herbivores. Lines represent boundary ZNGI, arrows are boundary vectors, and grey lines bound feasible supply conditions according to plants considered (i.e., feasibility cone). Continuous ZNGI and vector belong to herbivore 1, and dotted ZNGI and vector belong to herbivore 2. Zone I and zone VII contain not enough $R_1$ and $R_2$ respectively. Neither herbivore 1 nor herbivore 2 can survive. Zone II contains not enough $R_1$ for herbivore 2. Zone III does not allow herbivore 2 to survive if herbivore 1 is present. Zone V does not allow herbivore 1 to survive if herbivore 2 is present. Zone VI contains not enough $R_2$ for herbivore 1. If the supply point is within zone IV both herbivore can survive together: it is coexistence. Then, the cross zone of the two ZNGIs is a stable equilibrium point (SE).
+\includegraphics[width=16 cm, keepaspectratio]{Coexistence2Herbivores}
+\caption{Phase plan for two coexisting herbivores. Lines represent boundary ZNGIs, and arrows are boundary vectors. %, and grey lines bound feasible supply conditions according to plants considered (i.e., feasibility cone). Continuous 
+Solid ZNGIs and solid vector belong to herbivore 1, while dotted ZNGIs and dotted vector belong to herbivore 2. Zone I and zone VII do not provide enough $R_1$ and $R_2$ respectively (i.e., neither herbivore 1 nor herbivore 2 can survive). Zone II does not provide enough $R_1$ for herbivore 1. Zone III does not allow herbivore 1 to survive if herbivore 2 is present. Zone V does not allow herbivore 2 to survive if herbivore 1 is present. Zone VI contains not enough $R_2$ for herbivore 2. If the supply point lies within zone IV both herbivores can coexist. However, resource packaging within plants constrains resource supply. This resource supply lies within a feasible cone (grey area): any points outside of this cone cannot occur due to resource ratios within plants. %survive together: it is coexistence. Then, the cross zone of the two ZNGIs is a stable equilibrium point (SE).
 }
 \label{Coexistence}
 \end{figure}
 
 \begin{figure}[h]
-\includegraphics[width=15 cm, keepaspectratio]{Exclusion}
-\caption{Phase plan for competitive exclusion. Representation of ZNGI and vectors is similar to figure \ref{Coexistence}, except for zone IV. This zone generally leads to exclusion of herbivore 1 or 2. The crossing zone of ZNGIs either can be a non stable equilibrium  (NSE) or does not allow coexistence of the two herbivore species. }
+\includegraphics[width=16 cm, keepaspectratio]{Exclusion2Herbivores}
+\caption{Phase plan for competitive exclusion between two herbivores. Representation of ZNGIs and vectors is similar to figure \ref{Coexistence}, except for zone IV. This zone generally leads to exclusion of herbivore 1 or 2. The crossing zone of ZNGIs either can be a non stable equilibrium  or does not allow coexistence of the two herbivore species. }
 \label{Exclusion}
 \end{figure}
 

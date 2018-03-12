@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2017.5.24)  9 MAR 2018 18:23
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2017.5.24)  12 MAR 2018 19:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -404,77 +404,87 @@ se of the food-web: a resource-
 LaTeX Font Info:    Try loading font information for T1+lmss on input line 44.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 47.
+) [1
+
+] [2] [3]
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 71.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 47.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 71.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 47.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 71.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 47.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 71.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 47.
+(Font)              <12> on input line 71.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 47.
+(Font)              <8> on input line 71.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 47.
-LaTeX Font Info:    Try loading font information for U+msa on input line 47.
+(Font)              <6> on input line 71.
+LaTeX Font Info:    Try loading font information for U+msa on input line 71.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 47.
+LaTeX Font Info:    Try loading font information for U+msb on input line 71.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+) [4] [5]
+[6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21]
+[22] [23] [24] (./Article.bbl [25] [26] [27] [28]) [29] [30
 
-] [2]
-[3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18]
-[19] [20] [21] [22] [23] [24] [25] (./Article.bbl [26] [27] [28] [29]) [30]
+]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 456.
+(Font)              <10.95> on input line 520.
 
-Overfull \hbox (35.12292pt too wide) in paragraph at lines 456--470
+Overfull \hbox (35.12292pt too wide) in paragraph at lines 520--534
  [][] 
  []
 
 File: Conceptuel.pdf Graphic file (type QTm)
 <use  "Conceptuel.pdf" >
-Overfull \hbox (11.85184pt too wide) in paragraph at lines 496--497
+Overfull \hbox (11.85184pt too wide) in paragraph at lines 539--540
  [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-File: 1plant.pdf Graphic file (type QTm)
-<use  "1plant.pdf" >
+File: TwoHerbivoresOnePlant.pdf Graphic file (type QTm)
+<use  "TwoHerbivoresOnePlant.pdf" >
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-File: Coexistence.pdf Graphic file (type QTm)
-<use  "Coexistence.pdf" >
+File: Coexistence2Herbivores.pdf Graphic file (type QTm)
+<use  "Coexistence2Herbivores.pdf" >
+Overfull \hbox (25.23946pt too wide) in paragraph at lines 552--555
+[][] 
+ []
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-File: Exclusion.pdf Graphic file (type QTm)
-<use  "Exclusion.pdf" >
+File: Exclusion2Herbivores.pdf Graphic file (type QTm)
+<use  "Exclusion2Herbivores.pdf" >
+Overfull \hbox (25.23946pt too wide) in paragraph at lines 560--561
+[][] 
+ []
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -486,12 +496,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5504 strings out of 493068
- 80375 string characters out of 6135636
- 159351 words of memory out of 5000000
- 9324 multiletter control sequences out of 15000+600000
+ 5500 strings out of 493068
+ 80373 string characters out of 6135636
+ 157351 words of memory out of 5000000
+ 9320 multiletter control sequences out of 15000+600000
  53931 words of font info for 47 fonts, out of 8000000 for 9000
  1347 hyphenation exceptions out of 8191
- 44i,12n,43p,1498b,397s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,12n,43p,1368b,401s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on Article.pdf (35 pages).

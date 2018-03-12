@@ -5,45 +5,45 @@ The style file: AmNat.bst
 Database file #1: Article.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--missing publisher in Gause1934
-You've used 38 entries,
+You've used 37 entries,
             3158 wiz_defined-function locations,
-            907 strings with 10195 characters,
-and the built_in function-call counts, 21256 in all, are:
-= -- 1815
-> -- 858
+            899 strings with 10019 characters,
+and the built_in function-call counts, 20652 in all, are:
+= -- 1763
+> -- 828
 < -- 28
-+ -- 302
-- -- 253
-* -- 1410
-:= -- 3505
-add.period$ -- 156
-call.type$ -- 38
-change.case$ -- 272
-chr.to.int$ -- 39
-cite$ -- 39
-duplicate$ -- 1532
-empty$ -- 1605
-format.name$ -- 372
-if$ -- 4278
++ -- 292
+- -- 244
+* -- 1366
+:= -- 3406
+add.period$ -- 152
+call.type$ -- 37
+change.case$ -- 264
+chr.to.int$ -- 38
+cite$ -- 38
+duplicate$ -- 1488
+empty$ -- 1564
+format.name$ -- 360
+if$ -- 4160
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 310
-newline$ -- 198
-num.names$ -- 152
-pop$ -- 582
+missing$ -- 301
+newline$ -- 193
+num.names$ -- 148
+pop$ -- 565
 preamble$ -- 1
-purify$ -- 236
+purify$ -- 229
 quote$ -- 0
-skip$ -- 544
+skip$ -- 530
 stack$ -- 0
-substring$ -- 1096
-swap$ -- 662
+substring$ -- 1069
+swap$ -- 642
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 324
+type$ -- 315
 warning$ -- 1
-while$ -- 146
+while$ -- 141
 width$ -- 0
-write$ -- 499
+write$ -- 486
 (There was 1 warning)
